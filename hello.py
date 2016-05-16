@@ -1,4 +1,4 @@
 def web_app(env, response):
     response('200 OK', [('Content-Type', 'text/plain')])
-    print(env)
+    env["wsgi.errors"].write(str(env))
     return env["QUERY_STRING"].split('&')
