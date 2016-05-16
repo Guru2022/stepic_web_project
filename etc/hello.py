@@ -4,7 +4,7 @@ CONFIG = {
     # 'python': '/usr/bin/python',
     'args': (
         '--bind=0.0.0.0:8080',
-        '--access-logfile /home/box/gunicorn.log',
+        '--access-logfile=/home/box/gunicorn.log',
         'hello:web_app',
     ),
 }
