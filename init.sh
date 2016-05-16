@@ -1,4 +1,4 @@
 sudo ln -sf /home/box/web/etc/nginx.conf  /etc/nginx/nginx.conf
 sudo /etc/init.d/nginx restart
-sudo /etc/init.d/gunicorn stop
-sudo gunicorn -D /home/box/web/hello.py:web_app
+sudo ln -sf /home/box/web/etc/hello.py /etc/gunicorn.d/hello.py
+sudo /etc/init.d/gunicorn restart
