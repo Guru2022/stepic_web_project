@@ -3,7 +3,7 @@ CONFIG = {
     'args': (
         '--bind=0.0.0.0:8000',
         '--access-logfile=/home/box/gunicorn.log',
-        'ask.wsgi:',
+        'ask.wsgi:application',
     ),
 }
 
