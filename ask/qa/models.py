@@ -10,7 +10,11 @@ class Question(models):
     text = models.TextField()
     added_at = models.DateField()
     rating = models.DecimalField()
-    author = models.ForeignKey(User)
+    author = models.OneToOneField(User)
     likes = models.ManyToManyField(User)
 
-
+class Answer(models):
+    text = models.TextField()
+    added_at = models.DateField()
+    question = models.ForeignKey(Question)
+    author = models.OneToOneField(User)
