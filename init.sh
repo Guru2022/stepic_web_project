@@ -7,6 +7,5 @@ sudo /etc/init.d/gunicorn restart
 sudo pip install pip --upgrade
 sudo pip install django --upgrade
 
-sudo mysql -u root -e "create database qadb;create user 'root';GRANT ALL ON * TO 'root';FLUSH PRIVILEGES;
-"
+sudo mysql -u root -e "create database qadb;create user 'root';GRANT ALL ON qadb.* TO 'root';FLUSH PRIVILEGES;"
 

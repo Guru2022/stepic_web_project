@@ -5,10 +5,17 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class QuestionManager(models.Manager):
+    def new():
+        pass
+    def popular():
+        pass
+
 class Question(models.Model):
+    objects = QuestionManager()
     title = models.CharField(max_length=255)
     text = models.TextField()
-    added_at = models.DateField(null=True, blank=True)
+    added_at = models.DateTimeField(null=True, blank=True)
     rating = models.IntegerField()
     author = models.ForeignKey(User, related_name='+')
     likes = models.ManyToManyField(User)
@@ -18,7 +25,7 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.TextField()
-    added_at = models.DateField(null=True, blank=True)
+    added_at = models.DateTimeField(null=True, blank=True)
     question = models.ForeignKey(Question)
     author = models.ForeignKey(User)
 
