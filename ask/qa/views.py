@@ -26,9 +26,16 @@ def questions_list_popular(request):
         'page': page
     })
 
-# TODO
-def show_question(request):
-    pass
+def show_question(request, *args):
+    try:
+        question = Question.objects.get(id=int(args[0]))
+    except:
+        raise Http404
+    answers = Answer.objects.filter(question_id=int(args[0]))
+    return render(request, 'answers_all.html', {
+        'answers': answers,
+        'question': question
+    })
 
 def test(request, *args, **kwargs):
     return HttpResponse('OK')
