@@ -26,7 +26,7 @@ def paginate(request, qs):
 # Create your models here.
 
 class QuestionManager(models.Manager):
-    def new():
+    def new(self):
         return self.order_by('-added_at')
 
     def popular(self):
