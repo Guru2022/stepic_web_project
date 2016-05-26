@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import Http404
-from django.core.paginator import Paginator
 
 from django.http import HttpResponse
 from django.http import Http404
@@ -12,7 +11,7 @@ from models import paginate
 def questions_list_all(request):
     questions = Question.objects.all()
     page = paginate(request, questions)
-    return render(request, 'qa/question_all.html', {
+    return render(request, 'question_all.html', {
         'posts': page.object_list,
         'paginator': page.paginator,
         'page': page
