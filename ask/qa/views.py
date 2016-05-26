@@ -8,6 +8,9 @@ from models import Question
 from models import Answer
 from models import paginate
 
+from forms import AskForm
+from forms import AnswerForm
+
 
 def questions_list_all(request):
     questions = Question.objects.new()
@@ -38,5 +41,16 @@ def show_question(request, *args):
         'question': question
     })
 
-def test(request, *args, **kwargs):
+def add_question(request, *args):
+    if request.method == 'POST':
+        form = AskForm(request.POST)
+        if form.is_valid():
+            question = form.save()
+            return HttpResponseRedirect(question.get_url())
+    else:
+        form = AskForm()
+    return render(request, 'form_template.html', {'form': form)
+
+
+def test(request):
     return HttpResponse('OK')

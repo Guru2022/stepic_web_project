@@ -1,6 +1,6 @@
 from django.forms import ModelForm
-from qa.models import Question
-from qa.models import Answer
+from models import Question
+from models import Answer
 
 class AskForm(ModelForm):
     class Meta:
