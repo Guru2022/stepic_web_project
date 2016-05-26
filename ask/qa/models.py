@@ -41,6 +41,9 @@ class Question(models.Model):
     author = models.ForeignKey(User, related_name='+', null=True, blank=True)
     likes = models.ManyToManyField(User)
 
+    def get_url(self):
+        return "/question/%d/" % self.id
+
     class Meta:
         db_table = 'question'
 

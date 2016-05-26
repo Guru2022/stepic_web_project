@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_protect
 from django.http import Http404
 
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.http import Http404
 
 from models import Question
@@ -41,15 +42,15 @@ def show_question(request, *args):
         'question': question
     })
 
+@csrf_protect
 def add_question(request, *args):
     if request.method == 'POST':
         form = AskForm(request.POST)
         if form.is_valid():
-            question = form.save()
-            return HttpResponseRedirect(question.get_url())
+            return HttpResponseRedirect(form.save().get_url())
     else:
         form = AskForm()
-    return render(request, 'form_template.html', {'form': form)
+    return render(request, 'form_template.html', {'form': form})
 
 
 def test(request):
