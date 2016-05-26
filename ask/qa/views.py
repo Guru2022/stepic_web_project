@@ -17,9 +17,14 @@ def questions_list_all(request):
         'page': page
     })
 
-# TODO
 def questions_list_popular(request):
-    pass
+    questions = Question.objects.popular()
+    page = paginate(request, questions)
+    return render(request, 'question_all.html', {
+        'posts': page.object_list,
+        'paginator': page.paginator,
+        'page': page
+    })
 
 # TODO
 def show_question(request):

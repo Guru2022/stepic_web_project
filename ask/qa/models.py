@@ -28,8 +28,8 @@ def paginate(request, qs):
 class QuestionManager(models.Manager):
     def new():
         pass
-    def popular():
-        pass
+    def popular(self):
+        return self.order_by('-rating')
 
 class Question(models.Model):
     objects = QuestionManager()
