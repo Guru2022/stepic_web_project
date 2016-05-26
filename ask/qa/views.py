@@ -19,11 +19,11 @@ def questions_list_all(request):
     })
 
 # TODO
-def question_list_popular(request):
+def questions_list_popular(request):
     pass
 
 # TODO
-def question_page(request):
+def show_question(request):
     pass
 
 def test(request, *args, **kwargs):
