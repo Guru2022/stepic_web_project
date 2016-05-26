@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Questions</title>  
+        <link rel="stylesheet" href="bootstrap.min.css">
+    </head> 
+    <body>
+        <nav><ul class="pagination">
+            {% for p in paginator.page_range %}
+                {% if p.number == page.number %}
+                <li class="active">
+                {% else %}
+                <li>
+                {% endif %}
+                    <a href="{{ paginator.baseurl }}{{ p.number }}">
+                    {{ p.number }}</a?
+                </li>
+            {% endfor %}
+        </ul></nav>
+    </body>
+</html>
