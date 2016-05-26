@@ -10,13 +10,13 @@
             {% for p in paginator.page_range %}
                 {% if p.number == page.number %}
                 <li class="active">
-                {% else %}
-                <li>
-                {% endif %}
                 {% for post in posts %}
                     <h2> {{ post.title }} </h2>
                     <a href="/question/{{ post.id }}/">{{post.text}}</a>
                 {% endfor %}
+                {% else %}
+                <li>
+                {% endif %}
                     <a href="/?page={{ p.number }}">{{ p.number }}</a>
                 </li>
             {% endfor %}
