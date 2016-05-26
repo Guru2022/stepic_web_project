@@ -10,7 +10,7 @@ from models import paginate
 
 
 def questions_list_all(request):
-    questions = Question.objects.all()
+    questions = Question.objects.new()
     page = paginate(request, questions)
     return render(request, 'question_all.html', {
         'posts': page.object_list,

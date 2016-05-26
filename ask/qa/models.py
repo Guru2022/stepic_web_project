@@ -27,7 +27,8 @@ def paginate(request, qs):
 
 class QuestionManager(models.Manager):
     def new():
-        pass
+        return self.order_by('-added_at')
+
     def popular(self):
         return self.order_by('-rating')
 
@@ -35,7 +36,7 @@ class Question(models.Model):
     objects = QuestionManager()
     title = models.CharField(max_length=255)
     text = models.TextField()
-    added_at = models.DateTimeField(null=True)
+    added_at = models.DateTimeField(auto_now_add=True, null=True)
     rating = models.IntegerField(null=True, default=0)
     author = models.ForeignKey(User, related_name='+')
     likes = models.ManyToManyField(User)
