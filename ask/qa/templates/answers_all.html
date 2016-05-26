@@ -5,11 +5,15 @@
         <title>{{ question.title }}</title>  
     </head> 
     <body>
+        <p>
+        {{ question.text }}
+        </p>
         <ul>
             {% for a in answers %}
                 <li>
                     {{ a.text }}
                 </li>
+            {% endfor %}
         </ul>
     </body>
 </html>

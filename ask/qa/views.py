@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.http import Http404
 
 from models import Question
+from models import Answer
 from models import paginate
 
 
@@ -31,7 +32,7 @@ def show_question(request, *args):
         question = Question.objects.get(id=int(args[0]))
     except:
         raise Http404
-    answers = Answer.objects.filter(question_id=int(args[0]))
+    answers = Answer.objects.filter(question__id=int(args[0]))
     return render(request, 'answers_all.html', {
         'answers': answers,
         'question': question

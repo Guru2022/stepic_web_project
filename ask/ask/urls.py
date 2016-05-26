@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^$', views.questions_list_all),
     url(r'^login/', views.test),
     url(r'^signup/', views.test),
-    url(r'^question/[0-9]+/', views.show_question),
+    url(r'^question/([0-9]+)/', views.show_question),
     url(r'^ask/', views.test),
     url(r'^popular/', views.questions_list_popular),
     url(r'^new/', views.test),

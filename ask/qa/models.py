@@ -41,7 +41,7 @@ class Question(models.Model):
     likes = models.ManyToManyField(User)
 
     class Meta:
-        db_table = 'qadb'
+        db_table = 'question'
 
 class Answer(models.Model):
     text = models.TextField()
@@ -50,4 +50,4 @@ class Answer(models.Model):
     author = models.ForeignKey(User)
 
     class Meta:
-        db_table = 'qadb'
+        db_table = 'answer'
