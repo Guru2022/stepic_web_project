@@ -31,19 +31,23 @@ def questions_list_popular(request):
         'page': page
     })
 
+@csrf_protect
 def show_question(request, *args):
     try:
         question = Question.objects.get(id=int(args[0]))
     except:
         raise Http404
+
     answers = Answer.objects.filter(question__id=int(args[0]))
+    form = AnswerForm(initial={'question':question,})
     return render(request, 'answers_all.html', {
         'answers': answers,
-        'question': question
+        'question': question,
+        'form': form
     })
 
 @csrf_protect
-def add_question(request, *args):
+def add_question(request):
     if request.method == 'POST':
         form = AskForm(request.POST)
         if form.is_valid():
@@ -52,6 +56,16 @@ def add_question(request, *args):
         form = AskForm()
     return render(request, 'form_template.html', {'form': form})
 
+@csrf_protect
+def add_answer(request):
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(form.cleaned_data.get('question').get_url())
+    else:
+        return HttpResponseRedirect('/')
+    return render(request, 'form_template.html', {'form': form})
 
 def test(request):
     return HttpResponse('OK')

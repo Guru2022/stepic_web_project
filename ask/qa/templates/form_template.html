@@ -13,7 +13,11 @@
             <form class="form-horizontal" method="post" action="">
                 {% csrf_token %}
                 <fieldset>
-                    {% for field in form %}
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+
+                    {% for field in form.visible_fields %}
                         <div class="control-group {% if field.errors %}has-error{% endif %}">
                             <label class="control-label">{{ field.label }}</label>
                             <div class="controls">{{ field }}</div>
@@ -21,7 +25,7 @@
                     {% endfor %}
                 </fieldset>
                 <div class="form-actions">
-                    <button type="submit" class="btn-primary">Ask</button>
+                    <button type="submit" class="btn-primary">Answer</button>
                 </div>
             </form>
         </div>

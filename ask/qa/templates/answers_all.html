@@ -7,15 +7,43 @@
         <title>{{ question.title }}</title>  
     </head> 
     <body>
-        <p>
-        {{ question.text }}
-        </p>
-        <ul>
-            {% for a in answers %}
-                <li>
-                    {{ a.text }}
-                </li>
+        <div class="container theme-showcase">
+           <div class="panel panel-success">
+                <div class="panel-heading">{{question.title}}</div>
+                <div class="panel-body">
+                    <p>{{question.text}}</p>
+                </div>
+           </div>
+
+           {% for e in form.non_field_errors %}
+                <div class="alert alert-danger">{{ e }}</div>
             {% endfor %}
-        </ul>
+            <form class="form-horizontal" method="post" action="/answer/">
+                {% csrf_token %}
+                <fieldset>
+                    {% for hidden in form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+
+                    {% for field in form.visible_fields %}
+                        <div class="control-group {% if field.errors %}has-error{% endif %}">
+                            <label class="control-label">{{ field.label }}</label>
+                            <div class="controls">{{ field }}</div>
+                        </div>
+                    {% endfor %}
+                </fieldset>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Answer</button>
+                </div>
+            </form>
+
+            <ul>
+                {% for a in answers %}
+                    <li>
+                        {{ a.text }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </body>
 </html>
