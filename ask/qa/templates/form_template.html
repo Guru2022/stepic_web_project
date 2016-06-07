@@ -1,12 +1,10 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    </head> 
-    <body>
-        <div class="container theme-showcase">
+{% extends "base.html" %}
+{% block menu %}
+        <li><a href="/">Questions<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">Ask</a></li>
+{% endblock %}
+
+{% block main %}
             {% for e in form.non_field_errors %}
                 <div class="alert alert-danger">{{ e }}</div>
             {% endfor %}
@@ -25,9 +23,7 @@
                     {% endfor %}
                 </fieldset>
                 <div class="form-actions">
-                    <button type="submit" class="btn-primary">Answer</button>
+                    <button type="submit" class="btn-primary">Ask</button>
                 </div>
             </form>
-        </div>
-    </body>
-</html>
+{% endblock %}

@@ -1,33 +1,31 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Questions</title>  
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    </head> 
-    <body>
-        <div class="container theme-showcase">
-            {% for post in posts %}
-                <div class="panel panel-success">
-                    <div class="panel-heading">{{post.title}}</div>
-                    <div class="panel-body">
-                        <p>{{post.text}}</p>
-                        <a class="btn btn-sm btn-info" href="/question/{{ post.id }}/">Answer &raquo;</a>
-                    </div>
-                </div>
-            {% endfor %}
-            <nav><ul class="pagination">
-                {% for p in paginator.page_range %}
-                    {% if p == page.number %}
-                    <li class="active">
-                    {% else %}
-                    <li>
-                    {% endif %}
-                        <a href="/?page={{ p }}">{{ p }}</a>
-                    </li>
-                {% endfor %}
-            </ul></nav>
-        </div>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} Questions {% endblock %}
+
+{% block menu %}
+		<li class="active"><a href="#">Questions<span class="sr-only">(current)</span></a></li>
+		<li><a href="/ask">Ask</a></li>
+{% endblock %}
+
+{% block main %} 
+    {% for post in posts %}
+	<div class="panel panel-success">
+	    <div class="panel-heading">{{post.title}}</div>
+	    <div class="panel-body">
+		<p>{{post.text}}</p>
+		<a class="btn btn-sm btn-info" href="/question/{{ post.id }}/">Answer &raquo;</a>
+	    </div>
+	</div>
+    {% endfor %}
+    <nav><ul class="pagination">
+	{% for p in paginator.page_range %}
+	    {% if p == page.number %}
+	    <li class="active">
+	    {% else %}
+	    <li>
+	    {% endif %}
+		<a href="/?page={{ p }}">{{ p }}</a>
+	    </li>
+	{% endfor %}
+    </ul></nav>
+{% endblock %}
