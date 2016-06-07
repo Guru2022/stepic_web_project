@@ -1,9 +1,9 @@
 CONFIG = {
-    'working_dir': '/home/box/web/ask',
+    'mode': 'wsgi',
+    'working_dir': '/home/dima/git/stepic_web_project/ask',
+    # 'python': '/usr/bin/python',
     'args': (
-        '--bind=0.0.0.0:8000',
-        '--access-logfile=/home/box/gunicorn.log',
+        '--bind=0.0.0.0:80',
         'ask.wsgi:application',
     ),
 }
-
