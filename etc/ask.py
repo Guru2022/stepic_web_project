@@ -1,6 +1,6 @@
 CONFIG = {
     'mode': 'wsgi',
-    'working_dir': '/home/box/web/etc/ask',
+    'working_dir': '/home/box/web/stepic_web_project/etc/ask',
     # 'python': '/usr/bin/python',
     'args': (
         '--bind=0.0.0.0:80',
