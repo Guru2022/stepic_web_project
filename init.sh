@@ -1,7 +1,7 @@
-# sudo ln -sf /home/box/web/etc/nginx.conf  /etc/nginx/nginx.conf
+# sudo ln -sf /home/box/web/stepic_web_project/etc/nginx.conf  /etc/nginx/nginx.conf
 # sudo /etc/init.d/nginx restart
-# sudo ln -sf /home/box/web/etc/hello.py /etc/gunicorn.d/hello.py
-sudo ln -sf /home/box/web/etc/ask.py /etc/gunicorn.d/ask.py
+# sudo ln -sf /home/box/web/stepic_web_project/etc/hello.py /etc/gunicorn.d/hello.py
+sudo ln -sf /home/box/web/stepic_web_project/etc/ask.py /etc/gunicorn.d/ask.py
 sudo /etc/init.d/gunicorn restart
 
 sudo pip install pip --upgrade
